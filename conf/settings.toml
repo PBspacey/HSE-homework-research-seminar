@@ -1,0 +1,8 @@
+[DATA]
+
+data_set = 'https://raw.githubusercontent.com/5x12/ml-cookbook/master/supplements/data/cars.csv'
+
+[MODELS]
+
+lasso = 'model/conf/lasso_regression.pkl'
+ridge = 'model/conf/ridge_regression.pkl'

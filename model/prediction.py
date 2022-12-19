@@ -8,3 +8,4 @@ def prediction(values, link_to_model: str) -> float:
     logging.info('model predicted')
     return reg.predict(values)
     
+
