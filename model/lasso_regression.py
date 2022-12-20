@@ -4,7 +4,7 @@ from connector.connector import get_data
 from conf.conf import logging
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.linear_model import Lasso
-from util.util import save_model, load_model
+from util.util import save_model
 from conf.conf import settings
 
 
@@ -26,17 +26,14 @@ def train_test_split_(df: pd.DataFrame) -> pd.DataFrame:
 
 def training_lasso(X_train: pd.DataFrame, y_train: pd.DataFrame) -> None:
     # # Initialize the model
-    # reg = Lasso(alpha=2.0, max_iter = 10000)
-    grid_params = {
-        'alpha': [0, 0.5, 1, 1.5, 2, 2.5, 3]
-    }
-    reg = GridSearchCV(Lasso(), grid_params)
 
+    reg = Lasso(alpha=2.0, max_iter = 10000)
+   
     # Train the model
     reg.fit(X_train, y_train)
     logging.info('model is trained')
-    logging.info(f'best params are: {reg.best_params_}')
-    # save_model(settings.MODELS.lasso, reg)
+
+    save_model(settings.MODELS.lasso, reg)
 
     return reg
 
